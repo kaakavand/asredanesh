@@ -1,3 +1,5 @@
+@use './variable.scss' as variable;
+
 * {
   margin: 0;
   padding: 0;
@@ -26,33 +28,32 @@ body {
   gap: 8px;
 }
 
-.content {
-
-}
-
 section {
-  background-color: #fff;
+  background-color: variable.$white;
   display: grid;
-  grid-template-columns: repeat(5 , 1fr);
+  grid-template-columns: repeat(5, 1fr);
   gap: 5px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   padding: 5px;
   border-radius: 6px;
 }
 
-aside div{
-  background-color: #fff;
+aside .menu {
+  background-color: variable.$white;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   border-radius: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 ul {
   list-style: none;
-  
+
 }
 
 .header {
-  background-color: #fff;
+  background-color: variable.$white;
   border-radius: 6px;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   padding: 5px 15px;
@@ -65,6 +66,7 @@ ul {
   height: 20px;
   width: 20px;
   display: none;
+  cursor: pointer;
 }
 
 footer {
@@ -81,21 +83,21 @@ h1 {
 }
 
 .close-asid {
-  background-color: #fff1f2;
-  color: #e11d48;
+  background-color: variable.$red-100;
+  color: variable.$red-500;
   font-weight: bold;
   border: none;
   border-radius: 6px;
   width: 100%;
   padding: 15px;
-  
-}
+  cursor: pointer;
+} 
 
 .title-sidbar {
-  background-color: #E5F2E9;
+  background-color: variable.$green-100;
   border-radius: 6px 6px 0 0;
-  border-bottom: 1px solid #4B865F;
-  color: #4B865F;
+  border-bottom: 1px solid variable.$green-500;
+  color: variable.$green-500;
   display: block;
   text-align: center;
   padding: 5px;
@@ -106,21 +108,56 @@ ul {
 }
 
 ul li {
-  background-color: #f0f9ff;
+  background-color: variable.$blue-100;
   border-radius: 6px;
-  color: #0e7490;
+  color: variable.$blue-500;
   display: block;
   text-align: center;
   padding: 5px;
   margin: 5px 0;
 }
 
+
+#menu_close {
+  display: none;
+  background-color: variable.$red-100;
+  border-radius: 6px;
+  color: variable.$red-500;
+  display: none;
+  text-align: center;
+  padding: 5px;
+  margin: 5px 0;
+  width: 100%;
+  border: none;
+  cursor: pointer;
+}
+
+#scroll {
+  background-color: variable.$red-500;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 15px 20px;
+  border: none;
+  border-radius: 6px;
+  color: variable.$red-100;
+  transition: all ease 0.3s;
+  cursor: pointer;
+  display: none;
+
+  &:hover {
+    background-color: variable.$red-100;
+    color: variable.$red-500;
+  }
+}
+
 @media only screen and (max-width: 1024px) {
   .main-content {
     grid-template-columns: 4fr 1fr;
   }
+
   section {
-    grid-template-columns: repeat(4 , 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
@@ -128,18 +165,21 @@ ul li {
   .main-content {
     grid-template-columns: 3fr 1fr;
   }
+
   section {
-    grid-template-columns: repeat(3 , 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 @media only screen and (max-width: 640px) {
   .main-content {
-    grid-template-columns: 2fr;  
+    grid-template-columns: 2fr;
   }
+
   section {
-    grid-template-columns: repeat(2 , 1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
+
   .header svg {
     display: block;
   }
@@ -154,14 +194,14 @@ ul li {
     display: none;
   }
 
-  aside div {
+  aside .menu {
     box-shadow: none;
   }
 }
 
 @media only screen and (max-width: 440px) {
   section {
-    grid-template-columns: repeat(1 , 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 
 }
